@@ -21,11 +21,82 @@ a{
 /*HEADER*/
 .header{
 height: 120px;
-display: flex;
-justify-content: space-between;
+
 }
+.inner-header{
+    display: flex;
+    justify-content: space-between;
+}
+.burger-menu{
+    width:40px ;
+    height: 30px;
+    display: none;
+    position: absolute;
+    top: 10%;
+    right:10%;
+    z-index: 50;
+}
+.burger-menu:before,
+.burger-menu:after{
+    content:"";
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    display: block;
+    position: absolute;
+    z-index:1 ;
+    transition: 0.5s;
+}
+.burger-menu:after{
+    bottom: 0;
+}
+.burger-menu:before{
+    top: 0;
+}
+.burger-menu.active:before{
+    transform: rotate(45deg);
+    top: 13px;
+}
+.burger-menu.active:after{
+    transform: rotate(-45deg);
+    bottom: 13px;
+}
+
+
+#burger{
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    display: block; 
+    position: absolute;
+    top:13px;
+    z-index: 50;
+}
+#burger.active{
+    display:none;
+}
+
+.burger-background{
+    width: 100%;
+    height: 100%;
+    background-color: #e9b188;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 49;
+    display: none;
+}
+    
+.burger-background.active{
+    top:0;
+  }
+
+
 .logo{
     margin-top: 40px;
+    display: block;
+    position: relative;
+    z-index: 50;
 }
 .logo-tlt{
     font-size: 32px;
@@ -39,6 +110,9 @@ justify-content: space-between;
 }
 .nav{
     margin-top: 60px;
+    display: block;
+    position: relative;
+    z-index: 50;
 }
 .nav-link{
     font-size:15px ;
@@ -65,35 +139,7 @@ justify-content: space-between;
 .nav-link:hover:after{
     opacity: 1;
 }
-/*BURGER*/
-.burger{
-    display: none;
-    width: 40px;
-    background-color: #fff;
-    height: 3px;
-    position: absolute;
-    top: 10px;
-    right:30px;
-    z-index: 10;
-    
-}
-.burger:before{
-    content:"";
-    width: 100%;
-    height: 3px;
-    background-color: #fff;
-    position: absolute;
-    display: block;
-}
 
-.burger:after{
-    content:"";
-    width: 100%;
-    height: 3px;
-    background-color: #fff;
-    position: absolute;
-    display: block;
-}
 /*INTRO*/
 .intro{
     height: 925px;
@@ -490,16 +536,49 @@ background-size: cover;
         }
     }
     @media(max-width:768px){
+      /*header*/
+
+      .burger-menu{
+        display: block;
+      }
+      .burger-background{
+        display: block;
+        top: -100%;
+        transition: 1s;
+      }
+      .burger-background.active{
+        top:0;
+      }
+     
+      .burger{
+        display: block;
+       }
+       #burger.active{
+        transform: scale(0);
+       }
+        .nav{
+            display: grid;
+            position: absolute;
+            top: -100%;
+            margin-top: 20px;
+            transition: 1s;
+        }
+        .nav.active{
+            top: 30%;
+        }
+        .nav-link{
+            font-size: 30px;
+            color: #fff;
+            margin-top: 20px;
+        }
+       
+       
        /*intro*/
         .intro{
         height: auto;
        }
-        .nav{
-        display: none;
-       }
-       .burger{
-        display: block;
-       }
+        
+       
        /*pets*/
        
        .pets-tlt{
